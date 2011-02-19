@@ -11,7 +11,9 @@ and the traffic volume.
 Want to try see it?
 -------------------
 
-Have a look at the demo-page at <http://traffique-demo.appspot.com>.
+Have a look at the public demo instance at <http://traffique-demo.appspot.com>.
+Access to Traffique is limited to app administrators by default. Traffique
+is limited to 20 concurrent observers to ensure performance.
 
 How does it work?
 -----------------
@@ -36,3 +38,12 @@ You can install Traffique on your own App Engine account in 7 steps:
    to include your API key.
 7. Add the Traffique folder to the App Engine Launcher (File > Add Existing Application) from
    the App Engine SDK and choose "Deploy".
+
+Disclaimer
+----------
+
+This app has not been tested on high-volume websites and should not
+be used as such. Since there is no Nagle-algorithm present, each
+request results in a single message to be sent to all observers. It is
+unknown how this affects the performance in case of a large number
+of visitors.
