@@ -45,7 +45,7 @@ css: $(CSS_FILES)
 ## Javascript
 ###########################################################
 
-CLOSURE_LIBRARY = closure-library
+CLOSURE_LIBRARY = src/static/js/closure-library
 
 jsdep:
 	${CLOSURE_LIBRARY}/closure/bin/build/depswriter.py --root_with_prefix="src/static/js/traffique ../../../traffique" > src/static/js/traffique-deps.js
@@ -60,7 +60,7 @@ dist: all
 	cp LICENSE dist
 	rm -rf dist/*.pyc
 	rm -rf dist/static/js/*
-	src/static/js/closure-library/closure/bin/build/closurebuilder.py --root=src/static/js/traffique/ --root=src/static/js/closure-library/ --namespace="traffique.start" --output_mode=compiled --compiler_jar=compiler.jar --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" --compiler_flags="--externs=src/static/js/maps-externs.js" --compiler_flags="--externs=src/static/js/gae-externs.js" > dist/static/js/traffique.js
+	${CLOSURE_LIBRARY}/closure/bin/build/closurebuilder.py --root=src/static/js/traffique/ --root=src/static/js/closure-library/ --namespace="traffique.start" --output_mode=compiled --compiler_jar=compiler.jar --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" --compiler_flags="--externs=src/static/js/maps-externs.js" --compiler_flags="--externs=src/static/js/gae-externs.js" > dist/static/js/traffique.js
 
 ###########################################################
 ## Clean
