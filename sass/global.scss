@@ -1,0 +1,190 @@
+/*
+ * Traffique: live visitor statistics on App Engine
+ * Copyright (C) 2011 Jean Joskin <jeanjoskin.com>
+ *
+ * Traffique is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Traffique is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Traffique. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "inc/reset";
+
+html
+{
+	height: 100%;
+}
+
+body
+{
+	font: 11pt "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "sans serif";
+	background: #fff url(/img/bg-noise.png);
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow:hidden;
+}
+
+$headerHeight: 57px;
+$workspacePaddingV: 30px;
+
+header
+{
+	height: $headerHeight;
+	background: url(/img/bg-bar.png) repeat-x top left;
+	
+	h1
+	{
+		color:#eee;
+		font-size: 18pt;
+		float:right;
+		text-shadow: 0px -1px 0 rgba(0,0,0,0.9);
+		line-height: $headerHeight;
+		margin-right: 20px;
+	}
+	
+	nav
+	{
+		li
+		{
+			display:inline-block;
+			padding-left: 40px;
+			
+			a
+			{
+				display:block;
+				text-decoration:none;
+				color: #ccc;
+				padding: 5px 5px 5px 5px;
+				opacity: 0.8;
+				transition: opacity .25s linear;
+				-webkit-transition: opacity .25s linear;
+			}
+			
+			a:hover
+			{
+				opacity: 1;
+			}
+			
+			.icon
+			{
+				display: block;
+				margin: 0 auto;
+			}
+			
+			.text
+			{
+				display:block;
+				margin-top: 4px;
+				text-shadow: 0px -2px 0 #000;
+				font-size: 10pt;
+			}
+			
+			.icon-map
+			{
+				background: url(/img/icon-map.png) no-repeat;
+				width: 26px;
+				height: 23px;
+			}
+			
+			.icon-chart
+			{
+				background: url(/img/icon-chart.png) no-repeat;
+				width: 29px;
+				height: 25px;
+			}
+		}
+		
+		li.active
+		{
+			a
+			{
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.workspace
+{
+	position: absolute;
+	top: $headerHeight + $workspacePaddingV;
+	bottom: $workspacePaddingV;
+	width: 100%;
+}
+
+.workspace.inactive
+{
+	visibility: hidden;
+}
+
+.box
+{
+	position:relative;
+	width: 95%;
+	height: 100%;
+	margin: 0 auto;
+	
+	box-shadow: 0 0 10px #aaa;
+	-moz-box-shadow: 0 0 10px #aaa;
+	-webkit-box-shadow: 0 0 10px #aaa;
+	background: #fff;
+}
+
+.map
+{
+	width: 100%;
+	height: 100%;
+}
+
+
+.chart
+{
+	position:absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	
+	background: #222;
+	
+	.bars
+	{
+		position: absolute;
+		top: 20px;
+		bottom: 20px;
+		left: 20px;
+		right: 20px;
+		
+		.bar
+		{
+			position: relative;
+			display:inline-block;
+			margin: 10px 1px 10px 1px;
+			background-color: #444;
+			height: 95%;
+		
+			.value
+			{
+				position: absolute;
+				bottom: 0;
+				height: 0%;
+				width: 100%;
+				background-color: #6cf;
+			}
+		}
+	
+		.cursor
+		{
+			background-color: #666;
+		}
+	}
+}

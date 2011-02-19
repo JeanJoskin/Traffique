@@ -1,0 +1,4 @@
+cron:
+- description: clean unused sessions
+  url: /task/cleanSessions
+  schedule: every 12 hours

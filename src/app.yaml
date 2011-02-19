@@ -1,0 +1,24 @@
+application: traffique-demo
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+- url: /style
+  static_dir: static/style
+- url: /img
+  static_dir: static/img
+- url: /js
+  static_dir: static/js
+- url: /t.gif
+  script: tracker.py
+- url: /task/.*
+  script: tasks.py
+  login: admin
+- url: /.*
+  script: backend.py
+  login: admin
+

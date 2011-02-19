@@ -1,0 +1,38 @@
+Traffique
+=========
+
+What is it?
+-----------
+
+Traffique is an open source app for Google App Engine. It allows you to see your
+website's visitors in real-time. You can instantly see their estimated location
+and the traffic volume.
+
+Want to try see it?
+-------------------
+
+Have a look at the demo-page at <http://traffique-demo.appspot.com>.
+
+How does it work?
+-----------------
+
+You include the single pixel image <http://your-traffique-instance.appspot.com/t.gif> on your
+website (or e-mail, or whatever you want to track). Then you open Traffique
+and see all page-views in real-time.
+
+Use it on your own website!
+---------------------------
+
+You can install Traffique on your own App Engine account in 7 steps:
+
+1. Download the latest Traffique distribution zip and unzip it on your hard-drive.
+2. Download and install the App Engine SDK for Python for your platform at <http://code.google.com/appengine/downloads.html>
+3. Create a new application on the App Engine website and choose your own application identifier.
+4. Open "app.yaml". Change the "application: <your application id here>" to refer
+   to the app id you chose at the first step.
+5. Register at <http://ipinfodb.com/register.php> and create a free API key. This key is needed
+   to enable the app to estimate a user's location.
+6. Open "settings.py". Change the line "IPINFO_API_KEY = '<your ipinfo api key here>'"
+   to include your API key.
+7. Add the Traffique folder to the App Engine Launcher (File > Add Existing Application) from
+   the App Engine SDK and choose "Deploy".
