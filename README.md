@@ -26,7 +26,8 @@ Use it on your own website!
 
 You can install Traffique on your own App Engine account in 7 steps:
 
-1. Download the latest Traffique distribution zip and unzip it on your hard-drive.
+1. Download the latest Traffique distribution zip and unzip it on your hard-drive. Download
+   location: <https://github.com/downloads/JeanJoskin/Traffique/traffique-0.1-dist.zip>.
 2. Download and install the App Engine SDK for Python for your platform at <http://code.google.com/appengine/downloads.html>
 3. Create a new application on the App Engine website and choose your own application identifier.
 4. Open "app.yaml". Change the "application: <your application id here>" to refer
