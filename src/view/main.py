@@ -1,6 +1,0 @@
-from templateUtil import to_str,escape
-def render(e):
-    _buf = []
-    _buf.extend(('''<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><title>Traffique</title><link rel="home" href="/"/><link href="//fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/><link rel="stylesheet" href="/style/global.css"/><script>var SESSION_ID = \'''', escape(to_str(e['session_id'])), '''\';var CHANNEL_TOKEN = \'''', escape(to_str(e['channel_token'])), '''\';var IPINFO_API_KEY = \'''', escape(to_str(e['ipinfo_key'])), '''\';</script><script type="text/javascript" src="/_ah/channel/jsapi"></script><script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false&amp;language=en"></script><script type="text/javascript" src="/js/traffique.js"></script></head><body><header><h1>Traffique</h1><nav><ul id="toolbar"></ul></nav></header><div id="workspaces"></div></body></html>''', ));
-    
-    return ''.join(_buf)

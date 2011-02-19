@@ -4,6 +4,8 @@ Traffique.tmproj
 src/static/style/*
 src/static/js/traffique-deps.js
 src/static/js/closure-library/*
+src/view/*.py
+!src/view/__init__.py
 dist
 .DS_Store
 .project
