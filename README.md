@@ -47,3 +47,5 @@ be used as such. Since there is no Nagle-algorithm present, each
 request results in a single message to be sent to all observers. It is
 unknown how this affects the performance in case of a large number
 of visitors.
+
+!(https://traffique-demo.appspot.com/t.gif)
