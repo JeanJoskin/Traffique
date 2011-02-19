@@ -48,4 +48,4 @@ request results in a single message to be sent to all observers. It is
 unknown how this affects the performance in case of a large number
 of visitors.
 
-!(https://traffique-demo.appspot.com/t.gif)
+![](https://traffique-demo.appspot.com/t.gif)
