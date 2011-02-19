@@ -20,5 +20,6 @@ handlers:
   login: admin
 - url: /.*
   script: backend.py
+  secure: never
   login: admin
 
