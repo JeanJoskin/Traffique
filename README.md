@@ -1,5 +1,4 @@
-Traffique
-=========
+![Traffique. Real-time traffic information](https://traffique-demo.appspot.com/img/banner.png)
 
 What is it?
 -----------
