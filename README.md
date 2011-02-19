@@ -7,7 +7,7 @@ Traffique is an open source app for Google App Engine. It allows you to see your
 website's visitors in real-time. You can instantly see their estimated location
 and the traffic volume.
 
-Want to try see it?
+Want to try it?
 -------------------
 
 Have a look at the public demo instance at <http://traffique-demo.appspot.com>.
