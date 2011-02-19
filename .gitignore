@@ -2,6 +2,7 @@ compiler.jar
 Traffique.tmproj
 *.pyc
 src/static/style/*
+src/static/js/traffique-deps.js
 src/static/js/closure-library/*
 dist
 .DS_Store
