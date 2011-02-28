@@ -30,11 +30,11 @@ You can install Traffique on your own App Engine account in 7 steps:
    location: <https://github.com/downloads/JeanJoskin/Traffique/traffique-0.1-dist.zip>.
 2. Download and install the App Engine SDK for Python for your platform at <http://code.google.com/appengine/downloads.html>
 3. Create a new application on the App Engine website and choose your own application identifier.
-4. Open "app.yaml". Change the "application: <your application id here>" to refer
+4. Open `app.yaml`. Change the `application: <your application id here>` to refer
    to the app id you chose at the first step.
 5. Register at <http://ipinfodb.com/register.php> and create a free API key. This key is needed
    to enable the app to estimate a user's location.
-6. Open "settings.py". Change the line "IPINFO_API_KEY = '<your ipinfo api key here>'"
+6. Open `settings.py`. Change the line `IPINFO_API_KEY = '<your ipinfo api key here>'`
    to include your API key.
 7. Add the Traffique folder to the App Engine Launcher (File > Add Existing Application) from
    the App Engine SDK and choose "Deploy".
