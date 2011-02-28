@@ -17,40 +17,43 @@
  */
 
 ///////////////////////////////////////////////////////////////////////////////
-// Traffique entry point
+// Map module
 ///////////////////////////////////////////////////////////////////////////////
 
-goog.provide('traffique.start');
+goog.provide('traffique.aggregator.GeoIp');
 
-goog.require('traffique.data');
-goog.require('traffique.ping');
-goog.require('traffique.Manager');
-goog.require('traffique.module.Map');
-goog.require('traffique.module.Chart');
-goog.require('traffique.aggregator.GeoIp');
+goog.require('traffique.aggregator.Aggregator');
+goog.require('goog.net.Jsonp');
 
-goog.require('traffique.tester');
-goog.require('goog.events');
+/**
+ * GeoIp aggregator class
+ * @constructor
+ * @implements {traffique.aggregator.Aggregator}
+ */
+traffique.aggregator.GeoIp = function()
+{
+}
 
-window.onload =
-	function()
-	{
-		goog.events.listen(window, 'unload',
-			function()
-			{
-				goog.events.removeAll();
-			}
-		);
-		
-		var data = new traffique.Data(CHANNEL_TOKEN);
-		data.registerAggregator(new traffique.aggregator.GeoIp());
-	
-		var manager = traffique.Manager.getInstance();
-		manager.register(new traffique.module.Map());
-		manager.register(new traffique.module.Chart());
-	
-		manager.init();
-	
-		traffique.ping.start();
-		traffique.tester.start();
+/** @inheritDoc */
+traffique.aggregator.GeoIp.prototype.update = function(visitorInfo, callback)
+{
+	var uri = 'http://api.ipinfodb.com/v2/ip_query.php';
+	var payload = {
+		'key' : IPINFO_API_KEY,
+		'ip' : visitorInfo['i'],
+		'output' : 'json',
+		'timezone' : 'false'
 	};
+	
+	var request = new goog.net.Jsonp(uri);
+	
+	request.send(
+		payload,
+		function(data)
+		{
+			visitorInfo['lat'] = data['Latitude'];
+			visitorInfo['lon'] = data['Longitude'];
+			callback();
+		}
+	);
+}

@@ -25,4 +25,4 @@ traffique.module.Module.prototype.thaw = function() {};
  * Notifies a module of a new visitor
  * @param {{i: string}} Visitor information where i = IP address.
  */
-traffique.module.Module.prototype.onVisitor = function(data) {};
+traffique.module.Module.prototype.onVisitor = function(visitorInfo) {};

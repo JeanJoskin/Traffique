@@ -23,7 +23,6 @@
 goog.provide('traffique.module.Map');
 
 goog.require('traffique.module.Module');
-goog.require('goog.net.Jsonp');
 goog.require('goog.dom');
 goog.require('goog.style');
 goog.require('goog.events');
@@ -118,9 +117,9 @@ traffique.module.Map.prototype.thaw = function()
  * @param {*} JSON message returned by the Geo-IP server
  * @private
  */
-traffique.module.Map.prototype.addMarker_ = function(data)
+traffique.module.Map.prototype.addMarker_ = function(visitorInfo)
 {
-	var latLng = new google.maps.LatLng(data['Latitude'], data['Longitude']);
+	var latLng = new google.maps.LatLng(visitorInfo['lat'], visitorInfo['lon']);
 	
 	this.markers.push( new google.maps.Marker({
 		'map' : this.gmap,
@@ -139,24 +138,7 @@ traffique.module.Map.prototype.addMarker_ = function(data)
 }
 
 /** @inheritDoc */
-traffique.module.Map.prototype.onVisitor = function(data)
+traffique.module.Map.prototype.onVisitor = function(visitorInfo)
 {
-	var uri = 'http://api.ipinfodb.com/v2/ip_query.php';
-	var payload = {
-		'key' : IPINFO_API_KEY,
-		'ip' : data['i'],
-		'output' : 'json',
-		'timezone' : 'false'
-	};
-	
-	var request = new goog.net.Jsonp(uri);
-	
-	var that = this;
-	request.send(
-		payload,
-		function(data)
-		{
-			that.addMarker_(data);
-		}
-	);
+	this.addMarker_(visitorInfo);
 }

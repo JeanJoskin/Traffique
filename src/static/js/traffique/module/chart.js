@@ -114,7 +114,7 @@ traffique.module.Chart.prototype.update = function()
 }
 
 /** @inheritDoc */
-traffique.module.Chart.prototype.onVisitor = function(data)
+traffique.module.Chart.prototype.onVisitor = function(visitorInfo)
 {
 	this.visitNow++;
 }

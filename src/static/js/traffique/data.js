@@ -30,19 +30,50 @@ goog.require('goog.json');
  */
 traffique.Data = function(token)
 {
+	this.aggregators = [];
+	
 	this.init(token);
 }
 
-traffique.Data.onMessage = function(msgJson)
+traffique.Data.prototype.registerAggregator = function(aggregator)
 {
-	// Parse the json (trusted source, hence unsafe)
-	var msg = goog.json.unsafeParse(msgJson.data);
-	
+	this.aggregators.push(aggregator);
+}
+
+traffique.Data.prototype.notifyAll_ = function(visitorInfo)
+{
 	// Distribute the message over all modules
 	var modules = traffique.Manager.getInstance().getModules();
 	for (i in modules)
 	{
-		modules[i].onVisitor(msg);
+		modules[i].onVisitor(visitorInfo);
+	}
+}
+
+traffique.Data.prototype.onMessage_ = function(json)
+{
+	// Parse the json (trusted source, hence unsafe parse)
+	var visitorInfo = goog.json.unsafeParse(json.data);
+	
+	// Run all aggregators in parallel
+	var nCompleted = 0;
+	var total = this.aggregators.length;
+	var that = this;
+	for (i in this.aggregators)
+	{
+		this.aggregators[i].update(visitorInfo,
+			function()
+			{
+				// Update completed counter
+				nCompleted++;
+				
+				if (nCompleted >= total)
+				{
+					// All aggregators are finished => notify all modules
+					that.notifyAll_(visitorInfo);
+				}
+			}
+		);
 	}
 }
 
@@ -53,5 +84,6 @@ traffique.Data.prototype.init = function(token)
 {
 	var channel = new goog.appengine.Channel(token);
 	var socket = channel.open();
-	socket.onmessage = traffique.Data.onMessage;
+	var that = this;
+	socket.onmessage = function (json) { that.onMessage_(json); };
 }
